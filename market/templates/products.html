@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}
+Admin
+{% endblock %}
+
+{% block content %}
+
+<div class="bg-light p-3 rounded" style='margin:0 auto;'>
+    <div class="col">
+        <div class="row align-items-center">
+            <div class="col-11 align-middle h2">Products</div>
+            {% include 'modal/product/create.html' %}
+            <div class="col-1"><button type="button" data-bs-toggle="modal" data-bs-target="#modal-create-product" class="btn btn-outline-success mb-1 align-middle" style="float:right;">Create</button></div>
+        </div>
+        <table class="container-fluid table align-middle rounded">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Barcode</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">File Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            {% for product in products %}
+            {% include 'modal/product/delete.html' %}
+            {% include 'modal/product/edit.html' %}
+            {% include 'modal/product/detail.html' %}
+            <tr>
+
+                    <td scope="col">{{ product.id }}</td>
+                    <td scope="col"><a type="button" data-bs-toggle="modal" data-bs-target="#modal-more-info-product-{{ product.id }}">{{ product.name }}</a></td>
+                    <td scope="col"><a type="button" data-bs-toggle="modal" data-bs-target="#modal-more-info-product-{{ product.id }}">{{ product.price }}</a></td>
+                    <td scope="col"><a type="button" data-bs-toggle="modal" data-bs-target="#modal-more-info-product-{{ product.id }}">{{ product.barcode }}</a></td>
+                    <td scope="col"><a type="button" data-bs-toggle="modal" data-bs-target="#modal-more-info-product-{{ product.id }}"><img src="{{url_for('static', filename='photos/'+product.image)}}" alt="" width="40p"/></a></td>
+                    <td scope="col"><a type="button" data-bs-toggle="modal" data-bs-target="#modal-more-info-product-{{ product.id }}">{{ product.image }}</a></td>
+                    <td scope="col"><a type="button" data-bs-toggle="modal" data-bs-target="#modal-more-info-product-{{ product.id }}">{{ product.description }}</a></td>
+                <td scope="col">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#modal-edit-product-{{ product.id }}" class="btn btn-success mb-1">Edit</button>
+                </td>
+                <td scope="col">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#modal-delete-product-{{ product.id }}" class="btn btn-primary mb-1">Delete</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

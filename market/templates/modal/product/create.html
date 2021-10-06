@@ -1,0 +1,38 @@
+<div class="modal fade" id="modal-create-product" tabindex="-1" aria-labelledby="modal-more-info-title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modal-more-info-title">Create New Product</h5>
+        </div>
+        <form class="" action="" method="post" enctype="multipart/form-data">
+            <div class="modal-body">
+                {{ product_form.hidden_tag() }}
+                <div class="row">
+                    <div class="col">{{ product_form.name.label }}</div>
+                    <div class="col">{{ product_form.name(style='width:100%;') }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">{{ product_form.price.label }}</div>
+                    <div class="col">{{ product_form.price(style='width:100%;') }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">{{ product_form.barcode.label }}</div>
+                    <div class="col">{{ product_form.barcode(style='width:100%;') }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">{{ product_form.image.label }}</div>
+                    <div class="col">{{ product_form.image(style='width:100%;') }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">{{ product_form.description.label }}</div>
+                    <div class="col">{{ product_form.description(style='width:100%;') }}</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                {{ product_form.submit(value='Add', id='add-button', class='btn btn-outline-success') }}
+            </div>
+        </form>
+    </div>
+  </div>
+</div>

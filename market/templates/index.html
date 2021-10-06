@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}
+Home Page
+{% endblock %}
+{% block content %}
+<div class="d-flex p-4 rounded bg-light border">
+    <div class="flex-shrink-0">
+        <img src="{{ url_for('static', filename='images/rinck-content-studio-V7nU3khUXQs-unsplash.jpg') }}" class="rounded" height="180vw" alt="...">
+    </div>
+    <div class="flex-grow-1 ms-3 p-2 ps-4">
+       <h5 class="card-title">#1 Mobile Shop</h5>
+       <p class="card-text">
+           Toronto Best Mobile shop!<br />
+           Easy, fast and best for the cell phones.<br />
+           The 1st mobile shop in Toronto.
+       </p>
+       <form class="" action="index" method="post">
+           <a href="{{ url_for('market_page') }}" class="btn btn-outline-primary" value="market" name="market">See the latest cell phones</a>
+       </form>
+    </div>
+</div>
+{% endblock %}

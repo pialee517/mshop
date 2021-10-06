@@ -1,0 +1,20 @@
+<div class="modal fade" id="modal-purchase-product-{{ product.id }}" tabindex="-1" aria-labelledby="modal-more-info-title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modal-more-info-title">{{ product.name }}</h5>
+        </div>
+        <div class="modal-body">
+            Are you sure to buy {{ product.name }} for ${{ product.price }}?
+        </div>
+        <div class="modal-footer">
+            <form class="" method="post">
+                {{ purchase_form.hidden_tag() }}
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <input name="available_product" type="hidden" value="{{product.id}}">
+                {{ purchase_form.submit(class='btn btn-primary', value='Confirm') }}
+            </form>
+        </div>
+    </div>
+  </div>
+</div>

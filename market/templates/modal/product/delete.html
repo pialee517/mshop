@@ -1,0 +1,22 @@
+<div class="modal fade" id="modal-delete-product-{{ product.id }}" tabindex="-1" aria-labelledby="modal-more-info-title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modal-more-info-title">{{ product.name }} (Product ID: {{ product.id }})</h5>
+        </div>
+        <div class="modal-body">
+            <p>
+            Are you sure to delete {{ product.name }}?
+            </p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <form class="" method="post">
+                {{ submit_form.hidden_tag() }}
+                <input name="delete_product" type="hidden" value="{{ product.id }}">
+                {{ submit_form.submit(value='Delete', class='btn btn-outline-danger') }}
+            </form>
+        </div>
+    </div>
+  </div>
+</div>

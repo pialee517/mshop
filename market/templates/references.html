@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+References
+{% endblock %}
+
+{% block content %}
+
+<div class="p-3 rounded" style='margin:0 auto;width:60%;'>
+    <h2 style="text-align:center;" class='p-2'>References</h2>
+    <div class="d-flex align-items-center">
+        <ul>
+            <img src="{{ url_for('static', filename='images/rinck-content-studio-V7nU3khUXQs-unsplash.jpg') }}" alt="" height="200px">
+            <li>Photo by <a href="https://unsplash.com/@rinckad?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Rinck Content Studio</a> on <a href="https://unsplash.com/s/photos/cell-phone?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+            <br />
+            <img src="{{url_for('static', filename='photos/amir-hanna-sweUF7FcyP4-unsplash.jpg')}}" alt="" height="200px">
+            <li>Photo by <a href="https://unsplash.com/@amirhanna?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Amir Hanna</a> on <a href="https://unsplash.com/s/photos/cell-phone?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+            <br />
+            <img src="{{url_for('static', filename='photos/amit-lahav-rxN2MRdFJVg-unsplash.jpg')}}" alt="" height="200px">
+            <li>Photo by <a href="https://unsplash.com/@amit_lahav?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Amit Lahav</a> on <a href="https://unsplash.com/s/photos/apple-image?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+            <br />
+            <img src="{{url_for('static', filename='photos/shiwa-id-F_cfF1uX7qY-unsplash.jpg')}}" alt="" height="200px">
+            <li>Photo by <a href="https://unsplash.com/@shiwa_id?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Shiwa ID</a> on <a href="https://unsplash.com/s/photos/cell-phone?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

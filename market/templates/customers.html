@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}
+Admin - Products
+{% endblock %}
+
+{% block content %}
+
+<div class="p-3 rounded" style='margin:0 auto;width:60%;'>
+    <h2 style="text-align:center;" class='p-2'>Customers</h2>
+        <table style='margin:0 auto;'>
+            <form class="" method="post">
+                <tr class="row">
+                    <td class="col">
+                        <select class="" name="select_customer" style="width:100%;">
+                            <option disabled selected value> -- Select customer -- </option>
+                            {% for customer in customers %}
+                                {% if customer_selected.id == customer.id %}
+                                <option value="{{customer.id}}"  selected>{{customer.id}} - {{customer.name}}</option>
+                                {% else %}
+                                <option value="{{customer.id}}" >{{customer.id}} - {{customer.name}}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr class="row">
+                    <td class="col mb-3">
+                        <button type="submit" name="select_submit" class="btn btn-secondary" style="width:100%;">Show</button>
+                    </td>
+                </tr>
+            </form>
+            <form class="" method="post">
+                {{ info_form.hidden_tag() }}
+            <tr class="row">
+                <td class="col"><label for="id">ID</label></td>
+                <td class="col"><input type="text" name="customer_for_edit" value="{{customer_selected.id}}" hidden=true><input type="text" name="e_customer" value="{{customer_selected.id}}" disabled=True></td>
+            </tr>
+            <tr class="row">
+                <td class="col">{{ info_form.email.label }}</td>
+                <td class="col">
+                    {{ info_form.email(value=customer_selected.email, hidden=true) }}
+                    <input type="text" name="" value="{{customer_selected.email}}", disabled=True>
+                </td>
+            </tr>
+            <tr class="row">
+                <td class="col">
+                    {{ info_form.name.label }}
+                </td>
+                <td class="col">
+                    {{ info_form.name(value=customer_selected.name) }}
+                </td>
+            </tr>
+            <tr class="row">
+                <td class="col">
+                    <label for="budget">Budget</label>
+                </td>
+                <td class="col">
+                    {% if customer_selected %}
+                        <input type="text" name="budget" value="{{ customer_selected.get_budget}}">
+                    {% else %}
+                        <input type="text" name="" value="">
+                    {% endif %}
+                </td>
+            </tr>
+            <tr class="row mt-2">
+                <td class="col">
+                    {{ info_form.submit(value="Edit", style='width:100%;') }}
+                </td>
+            </tr>
+            </form>
+        </table>
+</div>
+
+{% endblock %}

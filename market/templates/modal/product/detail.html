@@ -1,0 +1,23 @@
+<div class="modal fade" id="modal-more-info-product-{{ product.id }}" tabindex="-1" aria-labelledby="modal-more-info-title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modal-more-info-title">{{ product.name }}</h5>
+        </div>
+        <div class="modal-body">
+            <div class="">
+                <img src="{{url_for('static', filename='photos/'+product.image)}}" alt="" class="container"/>
+            </div>
+            <div class="container m-4">
+                <div class="row text-primary">Description: </div>
+                <div class="row mb-1">{{ product.description }}</div>
+                <div class="row text-primary">Price: </div>
+                <div class="row mb-1">${{ product.price }}</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+  </div>
+</div>

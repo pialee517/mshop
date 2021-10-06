@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <title>Mshop -
+            {% block title %}
+            {% endblock %}
+        </title>
+    </head>
+    <body>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="alert alert-{{ messages[0][0] }} alert-dismissible fade show m-auto">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    {% for category, message in messages %}
+                        <div>{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light p-3">
+            <a href="{{ url_for('index_page') }}" class="navbar-brand">Mshop</a>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <div class="navbar-nav me-auto mb-lg-0">
+                    {% if not current_user.is_authenticated or 'customer' in current_user.role %}
+                        <a href="{{ url_for('market_page') }}" class="nav-link">Market</a>
+                    {% endif %}
+                    {% if current_user.is_authenticated and 'admin' in current_user.role %}
+                        <a href="{{ url_for('customers_page') }}" class="nav-link">Customers</a>
+                        <a href="{{ url_for('products_page') }}" class="nav-link">Products</a>
+                    {% endif %}
+                </div>
+              <div class="d-flex">
+                  {% if current_user.is_authenticated %}
+                          <a href="{{ url_for('info_page') }}" class="btn text-secondary ms-2">
+                            {{ current_user.name|capitalize }}
+                            {% if 'customer' in current_user.role %}
+                                ${{ current_user.get_budget }}
+                            {% endif %}
+                          </a>
+                          <a href="{{ url_for('logout') }}"  class="btn btn-outline-primary me-0">Logout</a>
+                  {% endif %}
+                  {% if not current_user.is_authenticated %}
+                      <a href="{{ url_for('login_page') }}"  class="btn btn-outline-primary me-2">Login</a>
+                      <a href="{{ url_for('signup_page') }}"  class="btn btn-primary me-0">Sign up</a>
+                  {% endif %}
+              </div>
+            </div>
+
+        </nav>
+        <div class="mx-3">
+            {% block content %}
+            {% endblock %}
+        </div>
+            <div class="d-flex bd-highlight p-3">
+                <div class="me-auto pt-2 pb-2 bd-highlight text-center">&copy; 2021 Mshop Inc</div>
+                <div class="bd-highlight"><a href="{{ url_for('references_page') }}" class="navbar-nav navbar-light nav-link text-secondary">References</a></div>
+                <div class="bd-highlight"><a href="{{ url_for('about_page') }}" class="navbar-nav navbar-light nav-link text-secondary"  style="padding-right:0;">About Mshop</a></div>
+            </div>
+        </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    </body>
+</html>

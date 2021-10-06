@@ -1,0 +1,56 @@
+<div class="modal fade" id="modal-delete-account-{{ current_user.id }}" tabindex="-1" aria-labelledby="modal-more-info-title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modal-more-info-title">User: {{ current_user.name }}</h5>
+        </div>
+        <div class="modal-body">
+            <p>
+            Are you sure to delete your account?<br />
+            Information that will be removed includes:<br />
+                <ul>
+                    <li>Name</li>
+                    <li>Email</li>
+                </ul>
+            This will also result in a permanent loss of the following:<br />
+                <ul>
+                    <li>Remaining budget : ${{ current_user.get_budget }} </li>
+                    <li>Any remaining of owned product information</li>
+                    <ol>
+                        {% for user_product in user_products %}
+                        <li>{{ user_product.name }}</li>
+                        {% endfor %}
+                    </ol>
+                </ul>
+            </p>
+            Please fill out your email and password again.<br />
+        </div>
+        <form class="" method="post">
+            {{ delete_form.hidden_tag() }}
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        {{ delete_form.email.label }}
+                    </div>
+                    <div class="col">
+                        {{ delete_form.password.label }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {{ delete_form.email(style="width:100%;") }}
+                    </div>
+                    <div class="col">
+                        {{ delete_form.password(style="width:100%;") }}
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <input name="logined_user" type="hidden" value="{{current_user.id}}">
+                {{ delete_form.submit(class='btn btn-danger') }}
+            </div>
+        </form>
+    </div>
+  </div>
+</div>

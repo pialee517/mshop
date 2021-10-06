@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}
+Market Page
+{% endblock %}
+{% block content %}
+
+<div class="row">
+    <div class="col mx-2 p-3 rounded bg-light border">
+        <h2>Available Products to Buy</h2>
+        <table class="container-fluid table align-middle rounded">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Barcode</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            {% for product in products %}
+            {% include 'modal/product/purchase.html' %}
+            {% include 'modal/product/detail.html' %}
+            <tr>
+                <td scope="col">{{ product.name }}</td>
+                <td scope="col">{{ product.price }}</td>
+                <td scope="col">{{ product.barcode }}</td>
+                <td scope="col">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#modal-more-info-product-{{ product.id }}" class="btn btn-success mb-1">More Info</button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#modal-purchase-product-{{ product.id }}" class="btn btn-primary mb-1">Buy</button>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% if current_user.is_authenticated %}
+    <div class="col mx-2 p-3 rounded bg-light border">
+        <h2>Purchased Products</h2>
+        <div class="row">
+            {% for user_product in user_products %}
+            {% include 'modal/product/owned.html' %}
+            <div class="col-5 m-3 border border-secondary bg-light rounded">
+                <div class="card-body p-1 mt-1">
+                    <h5 class="card-title">{{ user_product.name }} </h5>
+                    <p class="card-text">$ {{ user_product.price }}</p>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#modal-owned-product-{{ user_product.id }}" class="btn btn-outline-danger container-fluid mb-1">Sell</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+
+{% endblock %}

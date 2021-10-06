@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}
+Sign Up
+{% endblock %}
+
+{% block content %}
+
+<div class="bg-light p-3 rounded" style='margin:0 auto;width:35%;'>
+    <h2 style="text-align:center;" class='p-2'>Sign Up</h2>
+    <form class="" action="" method="post">
+        <table style='margin:0 auto;'>
+            {{ form.hidden_tag() }}
+            <tr class="row">
+                <td class="col">
+                    {{ form.email.label }}
+                </td>
+                <td class="col">
+                    {{ form.email() }}
+                </td>
+            </tr>
+            <tr class="row">
+                <td class="col">
+                    {{ form.name.label }}
+                </td>
+                <td class="col">
+                    {{ form.name() }}
+                </td>
+            </tr>
+            <tr class="row">
+                <td class="col">
+                    {{ form.password.label }}
+                </td>
+                <td class="col">
+                    {{ form.password() }}
+                </td>
+            </tr>
+            <tr class="row">
+                <td class="col">
+                    {{ form.confirm.label }}
+                </td>
+                <td class="col">
+                    {{ form.confirm() }}
+                </td>
+            </tr>
+            <tr class="row mt-2">
+                <td class="col">
+                    {{ form.submit(style='width:100%;') }}
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock %}

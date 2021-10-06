@@ -1,0 +1,43 @@
+<div class="modal fade" id="modal-edit-product-{{ product.id }}" tabindex="-1" aria-labelledby="modal-more-info-title" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="modal-more-info-title">{{ product.name }}</h5>
+        </div>
+        <form class="" method="post" enctype="multipart/form-data">
+            <div class="modal-body">
+                {{ product_form.hidden_tag() }}
+                <div class="row">
+                    <div class="col">Product ID</div>
+                    <div class="col"><input type="text" name="id" value="{{ product.id }}" style='width:100%;' disabled></div>
+                </div>
+                <div class="row">
+                    <div class="col">{{ product_form.name.label }}</div>
+                    <div class="col">{{ product_form.name(value=product.name, style='width:100%;') }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">{{ product_form.price.label }}</div>
+                    <div class="col">{{ product_form.price(value=product.price, style='width:100%;') }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">{{ product_form.image.label }}</div>
+                    <div class="col">{{ product_form.image(style='width:100%;') }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">{{ product_form.barcode.label }}</div>
+                    <div class="col">{{ product_form.barcode(value=product.barcode, style='width:100%;') }}</div>
+                </div>
+                <div class="row">
+                    <div class="col">{{ product_form.description.label }}</div>
+                    <div class="col">{{ product_form.description(value=product.description, style='width:100%;') }}</div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <input name="product_id" type="hidden" value="{{product.id}}">
+                {{ product_form.submit(value='Edit', id='edit-{{product.id}}', class='btn btn-outline-danger') }}
+            </div>
+        </form>
+    </div>
+  </div>
+</div>

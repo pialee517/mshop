@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+About Mshop
+{% endblock %}
+{% block content %}
+
+<div class="p-4 rounded bg-light border">
+    <img src="{{ url_for('static', filename='images/rinck-content-studio-V7nU3khUXQs-unsplash.jpg') }}" class="rounded mx-auto" width="40%" alt="..." style="display: block">
+    <h2>History</h2>
+    <ul>
+        <li>2021-09 Start business</li>
+        <li>2021-10 Open store</li>
+        <li>2021-10 Wesite service starts</li>
+    </ul>
+    <hr />
+    <h2>Our Company</h2>
+    <p>
+        We provide mobile phones based on in Toronto.<br />
+        Secure trading service between users is arranged.<br />
+        We invest in our people through flexible work hours, remote work options, comprehensive benefits development program, and more<br />
+    </p>
+    <hr />
+    <h2>Social Impact</h2>
+    <p>Charity - greenland, small school, cheer up fund for boys and girls<br />
+    Encouragement on volunteering and social activities</p>
+</div>
+
+{% endblock %}
